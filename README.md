@@ -58,5 +58,5 @@ TypeScript 版本的移植细节和组件如下：
 4. **客户端与签名管理器 (`xhsClient.ts` / `xhsConfig.ts`)** - 统一的封装层，暴露 `sign(apiPath, payload, cookie, method)` 接口供上层直接调用。
 
 > **注意事项**：  
-> `test_run.ts` 和 `test_run.py` 内部使用了一组固定的、包含 `a1` 及 `web_session` 等关键认证字段的 Cookie 用于演示测试。  
-> 若你在测试过程中遇到了 HTTP `406` 或 `401` 错误，往往是因为代码里写死的 Cookie 已经过期失效。此时只需要将测试文件中的 `COOKIE` 常量替换为你在真实浏览器里登录后获取的最新 Cookie 即可跑通。
+> `test_run.ts` 和 `test_run.py` 内部提供了一个 `COOKIE` 常量（初始值为 `"XXX"`）。  
+> 若你在测试过程中遇到了 HTTP `406` 或 `401` 错误，说明你没有配置有效的 Cookie。此时只需要将测试文件中的 `COOKIE = "XXX"` 替换为你在真实浏览器里登录小红书后获取的最新 Cookie（需要包含 `a1` 和 `web_session` 字段），即可成功跑通测试！
